@@ -48,12 +48,14 @@ set_perms $username:$group 640 $home/.ssh/id_rsa.pub
 
 set_bin_flag_perms () {
 # Usage
-# set_bin_flag_perms "1/bin" "1/flag" 30000
-# set_bin_flag_perms "2/bin" "2/flag" 31000
-    binary=$1
-    flag=$2
-    uid_offset=$3
+# set_bin_flag_perms <relative_path_to_binary> <relative_path_to_flag> <uid_offset_for_problem_user>
+# flag file doesn't exist yet
+    binary="$1"
+    flag="$2"
+    uid_offset="$3"
     binid=$(($uid_offset+$id))
+
+    ./gen_flag.py $flag $id > $home/$flag
     # setuid
     set_perms $binid:$group 4750 $home/$binary
     set_perms $binid:$binid  400 $home/$flag
