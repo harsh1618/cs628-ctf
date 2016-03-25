@@ -55,7 +55,7 @@ set_bin_flag_perms () {
     uid_offset="$3"
     binid=$(($uid_offset+$id))
 
-    ./gen_flag.py $flag $id > $home/$flag
+    ./gen_flag.py "$flag" "$id" > "$home/$flag"
     # setuid
     set_perms $binid:$group 4750 $home/$binary
     set_perms $binid:$binid  400 $home/$flag
@@ -69,3 +69,4 @@ set_perms root:$group 660 $home/.eternal_history
 # make append only
 chattr +a $home/.eternal_history
 
+set_bin_flag_perms 1/dew 1/flag 30000
