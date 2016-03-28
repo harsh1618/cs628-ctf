@@ -70,3 +70,4 @@ set_perms root:$group 660 $home/.eternal_history
 chattr +a $home/.eternal_history
 
 set_bin_flag_perms 1/dew 1/flag 30000
+set_bin_flag_perms 3/auth 3/flag.txt 40000
