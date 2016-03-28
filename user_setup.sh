@@ -11,7 +11,7 @@ fi
 
 if [ $# -ne 2 ]
 then
-    echo "Usage: $0 ID Name"
+    echo "Usage: $0 ID Username"
     exit 1
 fi
 
@@ -24,11 +24,11 @@ set_perms() {
 }
 
 id=$1
-username=u$id
-group=g$id
+username=$2
+group=$2
 groupadd --gid $((10000+$id)) $group
 # create user, copy files from /home/cs628/skel
-useradd --uid $((10000+$id)) -g $group -k /home/cs628/skel -c "$2" -m $username
+useradd --uid $((10000+$id)) -g $group -k /home/cs628/skel -m $username
 # disable password based login, probably not required if passwordless SSH login is disabled
 passwd -l $username
 
@@ -55,7 +55,7 @@ set_bin_flag_perms () {
     uid_offset="$3"
     binid=$(($uid_offset+$id))
 
-    ./gen_flag.py "$flag" "$id" > "$home/$flag"
+    ./gen_flag.py "$flag" "$username" > "$home/$flag"
     # setuid
     set_perms $binid:$group 4750 $home/$binary
     set_perms $binid:$binid  400 $home/$flag
