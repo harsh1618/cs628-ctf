@@ -14,7 +14,7 @@ var config = require('./config.js');
 var app = express();
 
 // mysql db
-app.locals.sequelize = new Sequelize('mysql://'+config.username+':'+config.password+'@172.27.20.7:3306/cs628');
+app.locals.sequelize = new Sequelize('mysql://'+config.username+':'+config.password+'@'+config.host+'/'+config.database);
 
 var sequelize = app.locals.sequelize;
 // model for flags
