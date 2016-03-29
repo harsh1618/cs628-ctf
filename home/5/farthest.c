@@ -3,8 +3,6 @@
 #include <string.h>
 #include <math.h>
 
-#define MAX_POINTS 1000
-
 struct point {
   double x;
   double y;
@@ -32,9 +30,10 @@ double farthest(char *in, int count)
         }
         return max;
     }
-    else
-        printf("Too many points\n");
-    return -1;
+    else {
+        fprintf(stderr, "Too many points\n");
+        exit(1);
+    }
 }
 
 int main(int argc, char *argv[])
@@ -51,7 +50,7 @@ int main(int argc, char *argv[])
     /*
      * format of argv[1]
      * <num_points>,<array of 'num_points' struct points>
-     * count should be human readable.
+     * num_points should be human readable.
      * Rest of the data should be binary.
      */
 
@@ -61,7 +60,6 @@ int main(int argc, char *argv[])
         exit(1);
     }
     in++; /* skip the comma */
-    farthest(in, num_points);
-
+    printf("Farthest distance %lf\n", farthest(in, num_points));
     return 0;
 }
