@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "One argument required\n");
         exit(1);
     }
+    getchar();
     foo(argv);
     return 0;
 }
