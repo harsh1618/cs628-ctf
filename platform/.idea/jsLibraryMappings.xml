@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{ctf628 node_modules}" />
+    <file url="PROJECT" libraries="{basic-auth-DefinitelyTyped, ctf628 node_modules, express-DefinitelyTyped, jquery-2.1.1, materialize, sequelize-DefinitelyTyped, sqlite3-DefinitelyTyped}" />
+  </component>
+</project>
