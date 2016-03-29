@@ -1,4 +1,4 @@
 all: dew
 
 dew: dew.c
-	gcc -o $@ $<
+	gcc -g -o $@ $<

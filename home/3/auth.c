@@ -1,14 +1,19 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 
-int main()
+int main(int argc, char *argv[])
 {
     char *ptr;
     FILE *fp;
     size_t written = 0;
     char message[256], file_flag[40], user_flag[40];
 
-    fp = fopen("flag.txt", "r");
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s flag_file\n", argv[0]);
+        exit(1);
+    }
+    fp = fopen(argv[1], "r");
     fscanf(fp, "%39s", file_flag);
 
     printf("Enter the flag\n");

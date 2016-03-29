@@ -2,7 +2,8 @@
 import sys
 from md5 import md5
 
-secret = "XXXXXXXXXXXXXXXXXXXXXX"
+with open("flag_key", "r") as f:
+    secret = f.read().strip()
 
 if len(sys.argv) != 3:
     print "Usage: %s <flag_id> <username>" % sys.argv[0]
