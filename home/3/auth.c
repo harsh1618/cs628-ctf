@@ -14,6 +14,11 @@ int main(int argc, char *argv[])
         exit(1);
     }
     fp = fopen(argv[1], "r");
+    if (!fp) {
+        fprintf(stderr, "Failed to open flag file\n");
+        exit(1);
+    }
+
     fscanf(fp, "%39s", file_flag);
 
     printf("Enter the flag\n");
