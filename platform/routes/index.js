@@ -54,13 +54,10 @@ router.post('/submit', function(req, res, next) {
         }
         isDone[question-1] = 1;
 
-        //update the db
-        flagModel.update({
+        //upsert the db
+        flagModel.upsert({
+          username: user.name,
           answers: isDone
-        }, {
-          where: {
-            username: user.name
-          }
         }).then(function() {
           res.redirect('/correct');
         });
