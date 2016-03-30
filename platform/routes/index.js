@@ -74,8 +74,9 @@ router.post('/submit', function(req, res, next) {
 
 
 function check_flag(username, question, flag) {
+  var crypto = require('crypto');
   var secret = config.secret;
-  hash = md5(secret+question+username);
+  var hash = crypto.createHash('md5').update(secret+question+username).digest('hex');
   return hash == flag;
 }
 

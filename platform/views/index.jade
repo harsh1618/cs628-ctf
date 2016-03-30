@@ -11,16 +11,42 @@ block content
         | 1. Dew
       .collapsible-body.question
         p SSH and run 'dew' executable in 1.
-        if isdone[3]
-          .done
-          p Solved
+        if isdone[0]
+          div(class="row")
+            a(class="btn disabled") Done!
         else
           div(class="row")
-            form(lass="col s12", action='/signup', method='POST')
+            form(lass="col s12", action='/submit', method='POST')
               div(class="row")
                 div(class="input-field col s4")
+                  input(id="question", type="hidden", value="1", name="question")
                   i(class="material-icons prefix") flag
-                  input(id="icon_prefix", type="text", class="validate")
+                  input(id="icon_prefix", type="text", class="validate", name="flag")
+                  label(for="icon_prefix") Flag
+                div(class="input-field col s6")
+                  button(class="btn waves-effect waves-light", type="submit", name="submit")
+                    | Submit
+                    i(class="material-icons right") send
+    li
+      div(class=isdone[1] ? "green collapsible-header" : "collapsible-header")
+        if isdone[1]
+          i(class="material-icons prefix") done
+        else
+          i(class="material-icons prefix") library_books
+        | 2. Dew
+      .collapsible-body.question
+        p SSH and run 'dew' executable in 1.
+        if isdone[1]
+          div(class="row")
+            a(class="btn disabled") Done!
+        else
+          div(class="row")
+            form(lass="col s12", action='/submit', method='POST')
+              div(class="row")
+                div(class="input-field col s4")
+                  input(id="question", type="hidden", value="2", name="question")
+                  i(class="material-icons prefix") flag
+                  input(id="icon_prefix", type="text", class="validate", name="flag")
                   label(for="icon_prefix") Flag
                 div(class="input-field col s6")
                   button(class="btn waves-effect waves-light", type="submit", name="submit")
