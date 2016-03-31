@@ -30,6 +30,7 @@ router.get('/incorrect', function(req, res, next) {
 });
 
 router.post('/submit', function(req, res, next) {
+  var fs = require('fs');
   var isDone = [0,0,0,0,0,0,0,0,0,0];
   var flagModel = res.app.locals.flagModel;
   var user = basicAuth(req);
@@ -41,6 +42,11 @@ router.post('/submit', function(req, res, next) {
   }
   else {
     var correct = check_flag(user.name, question, flag);
+    var logString = user.name + ' ' + (new Date()).toString() + ' ' + ' ' + question + ' ' + flag + ' ' + correct + '\n';
+    fs.appendFile('platform.log', logString, function(err) {
+          if (err) throw err;
+        }
+    );
     if (correct) {
       // find all his answers
       flagModel.findOne({
@@ -71,6 +77,12 @@ router.post('/submit', function(req, res, next) {
 
 
 function check_flag(username, question, flag) {
+  if(question == 9)
+      return flag == 'oCap7ainMyCapta1n';
+  else if (question == 7)
+      return flag == 'Weak_password_means_no_password';
+  else if(question == 10)
+      return flag == 'toBeOrN0t7oBe';
   var crypto = require('crypto');
   var secret = config.secret;
   var hash = crypto.createHash('md5').update(secret+question+username).digest('hex');
