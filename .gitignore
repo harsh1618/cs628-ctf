@@ -1,2 +1,6 @@
 flag_key
 students.csv
+php_chal/code/.htaccess
+php_chal/code/chroot
+php_chal/code/*.log
+
