@@ -77,6 +77,8 @@ router.post('/submit', function(req, res, next) {
 
 
 function check_flag(username, question, flag) {
+  if (question == 2) question = 3;
+  else if (question == 3) question = 2;
   if(question == 9)
       return flag == 'oCap7ainMyCapta1n';
   else if (question == 7)

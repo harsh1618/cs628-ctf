@@ -1,2 +1,5 @@
 # cs628-ctf
-Capture the Flag contest for the Computer Systems Security course at IIT Kanpur
+This repository contains the source for the final lab in CS628, Computer System
+Security course at IIT Kanpur. The lab was in the format of a Jeopardy-style
+Capture the Flag contest.
+
